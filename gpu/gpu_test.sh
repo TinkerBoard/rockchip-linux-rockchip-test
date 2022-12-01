@@ -6,16 +6,16 @@ info_view()
 {
     echo "*****************************************************"
     echo "***                                               ***"
-    echo "***            GPU TEST                           ***"
+    echo "***                 GPU TEST                      ***"
     echo "***                                               ***"
     echo "*****************************************************"
 }
 
 info_view
 echo "***********************************************************"
-echo "glmark2 fullscreen test:					1"
-echo "glmark2 offscreen test:					2"
-echo "glmark2 stress test:					3"
+echo "glmark2 fullscreen test:                                 1"
+echo "glmark2 offscreen test:                                  2"
+echo "glmark2 stress test:                                     3"
 echo "***********************************************************"
 
 read -t 30 GPU_CHOICE

@@ -1,15 +1,9 @@
 #!/bin/bash
 echo "======================================================="
-echo "    Test all camera(rkisp_demo)"
+echo "            Test all Cameras (By rkisp_demo)           "
 echo "======================================================="
-if [ $# -eq 0 ];
-then
-	echo "If you want to test rkisp/rkaiq camera 1000 times"
-	echo "CMD: camera_stresstest.sh 1000"
-	exit
-fi
 #num is test times
-TEST_NUM=0;
+COUNT=1
 #cam link num
 CAM_NUM=0;
 #media node max
@@ -44,16 +38,18 @@ for i in $(seq 0 $MEDIA_MAX); do
 	else
 		VID_NUM=$i;
 		echo ""
-		echo "     Test camera(Cam_num=$CAM_NUM) $1 times"
+		echo "     Test camera(Cam_num=$CAM_NUM) times"
 		echo "======================================================="
 	#	break;
 	fi
 done
 VID_NUM=$(($VID_NUM -1));
 
-while [ $TEST_NUM -lt $1 ]
-do
-	#init test 
+while true;do
+	NOW=`date`
+	TIME_LABEL="====== Count:$COUNT Time: $NOW ======"
+	echo $TIME_LABEL
+	COUNT=$(expr $COUNT + 1 )
 	i=0;
 	for i in $(seq 0 $CAM_NUM); do
 		VIDEO_DEV=$(eval echo \$VIDEO_NODE$i);
@@ -66,5 +62,6 @@ do
 			sleep 1;
 		fi
 	done;
-	TEST_NUM=$(($TEST_NUM +1));
-done;
+done
+	echo END $TIME_LABEL
+

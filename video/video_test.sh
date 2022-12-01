@@ -13,10 +13,11 @@ info_view()
 
 info_view
 echo "***********************************************************"
-echo "video test:						1"
-echo "video test with FPS display:				2"
-echo "video max FPS test without display:			3"
-echo "multivideo test:					        4"
+echo "video test:                                              1"
+echo "video test with FPS display:                             2"
+echo "video max FPS test without display:                      3"
+echo "multivideo test:                                         4"
+echo "video stresstest:                                        5"
 echo "***********************************************************"
 
 read -t 30 VIDEO_CHOICE
@@ -41,6 +42,11 @@ multivideo_test()
 	sh ${DIR_VIDEO}/test_gst_multivideo.sh
 }
 
+video_stresstest()
+{
+	sh ${DIR_VIDEO}/video_stresstest.sh
+}
+
 case ${VIDEO_CHOICE} in
 	1)
 		video_test
@@ -53,6 +59,9 @@ case ${VIDEO_CHOICE} in
 		;;
 	4)
 		multivideo_test
+		;;
+	5)
+		video_stresstest
 		;;
 	*)
 		echo "not found your input."
