@@ -14,8 +14,8 @@ info_view()
     echo "*****************************************************"
     echo "memtester:                                      1"
     echo "stressapptest:                                  2"
-    echo "stressapptest + memtester:                      3"
-    echo "ddr auto scaling:                               4"
+    echo "ddr auto scaling:                               3"
+    echo "stressapptest + memtester:                      4"
     echo "stressapptest + memtester + ddr auto scaling:   5"
     echo "*****************************************************"
     read -t 30 -p "please input test moudle: " DDR_CHOICE
