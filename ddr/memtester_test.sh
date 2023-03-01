@@ -7,7 +7,7 @@ mkdir -p ${RESULT_DIR}
 
 #get free memory size
 mem_avail_size=$(cat /proc/meminfo | grep MemAvailable | awk '{print $2}')
-mem_test_size=$((mem_avail_size/1024/2))M
+mem_test_size=$(((mem_avail_size/1024/2)-10))M
 
 #run memtester test
 echo "******************* DDR MEMTESTER TEST ******************************"
