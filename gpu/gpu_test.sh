@@ -14,8 +14,9 @@ info_view()
 info_view
 echo "***********************************************************"
 echo "glmark2 fullscreen test:                                 1"
-echo "glmark2 offscreen test:                                  2"
-echo "glmark2 stress test:                                     3"
+echo "glmark2 normal test (800x600):                           2"
+echo "glmark2 offscreen test:                                  3"
+echo "glmark2 stress test:                                     4"
 echo "***********************************************************"
 
 read -t 30 GPU_CHOICE
@@ -23,6 +24,11 @@ read -t 30 GPU_CHOICE
 glmark2_fullscreen_test()
 {
 	bash ${DIR_GPU}/test_fullscreen_glmark2.sh
+}
+
+glmark2_normal_test()
+{
+	bash ${DIR_GPU}/test_normal_glmark2.sh
 }
 
 glmark2_offscreen_test()
@@ -40,9 +46,12 @@ case ${GPU_CHOICE} in
 		glmark2_fullscreen_test
 		;;
 	2)
-		glmark2_offscreen_test
+		glmark2_normal_test
 		;;
 	3)
+		glmark2_offscreen_test
+		;;
+	4)
 		glmark2_stress_test
 		;;
 	*)
