@@ -4,13 +4,16 @@ COUNT=1
 
 v4l2-ctl --list-devices > /tmp/.v4l2_list
 ISP_VIDEO=($(awk '/rkisp_mainpath/{getline a;print a}' /tmp/.v4l2_list))
-CIF_VIDEO=($(awk '/stream_cif/{getline a;print a}' /tmp/.v4l2_list))
+CIF_VIDEO=($(awk '/cif/{getline a;print a}' /tmp/.v4l2_list | grep video))
 USB_VIDEO=($(awk '/usb/{getline a;print a}' /tmp/.v4l2_list))
 echo "======================================================="
 echo "              Test all Cameras (By v4l2)               "
 echo "======================================================="
 echo "Found ${#ISP_VIDEO[@]} isp cameras, ${#CIF_VIDEO[@]} cif cameras, ${#USB_VIDEO[@]} usb cameras"
 
+if [ ${#ISP_VIDEO[@]} -eq 0 -a ${#CIF_VIDEO[@]} -eq 0 -a ${#USB_VIDEO[@]} -eq 0 ]; then
+	exit 1
+fi
 
 while true;do
 	NOW=`date`
